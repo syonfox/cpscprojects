@@ -8,18 +8,16 @@ import java.util.List;
 import java.util.Arrays;
 
 public class Person {
-//Variables
+
+/**Variables**/
+
 private static int population = 0;
 private static int alive = 0;
-
-
-
-
-private String name;
+private static Person lastPerson = null;
 
 private Person murderer;
 private Person previousPerson;
-private static Person lastPerson = null;
+private String name;
 private boolean isAlive;
 
 
@@ -33,18 +31,13 @@ private boolean isAlive;
     alive++;
     
     previousPerson = lastPerson;
-    lastPerson = this;
-    
-    
-    
-    
-    
-    
+    lastPerson = this;    
   }
+ 
  
  /**Attributes**/
  
- //returns this persons murderer, Murderer is set when somone is murdered( see the murder method ).
+  //returns this persons murderer, Murderer is set when somone is murdered( see the murder method ).
   public Person murderer() {
     return this.murderer;
   }
@@ -64,6 +57,7 @@ private boolean isAlive;
       return false;
     }
   }
+  
   
  /**Actions**/
  
@@ -97,6 +91,7 @@ private boolean isAlive;
     int dead = population - alive;
     return dead;
   }
+  
   
   /**Class Actions**/
   //causes every living person to say hello
