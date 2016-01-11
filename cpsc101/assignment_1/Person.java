@@ -3,6 +3,9 @@
 *  Kier Lindsay
 *  Raymond Strohschein
 **/
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
 
 public class Person {
 
@@ -74,7 +77,20 @@ private boolean isAlive;
   
   //causes a person to say hello,  dead persons canot say hello
   public void sayHello() {
-    System.out.print("Hello, I'm " + name +"?\n");
+    System.out.print(name+":  Hello, I'm " + name +"?\n");
+  }
+  //causes a person to say somthing
+  //hopefully you dont mind me adding this public method it just makes writing my store a lot easy
+  public void say(String wordsToSay) {
+    if(isAlive) {
+      System.out.print(name+":  "+wordsToSay+"\n");
+    }
+  } 
+  //so it dosent break with no argument :)
+  public void say() {
+    if(isAlive) {
+      System.out.print(name+":  \n");
+    }
   }
  
  
@@ -100,6 +116,23 @@ private boolean isAlive;
       currentPerson.sayHello();
       currentPerson = currentPerson.previousPerson;
     }
-    
+  }
+  
+  //causes every living person to say somthing
+  //hopefully you dont mind me adding this public method it just makes writing my store a lot easy
+  public static void allSay(String wordsToSay) {
+    Person currentPerson = lastPerson;
+    while(currentPerson != null) {
+      currentPerson.say(wordsToSay);
+      currentPerson = currentPerson.previousPerson;
+    }
+  }
+  //so it dosent break with no argumetns :)
+  public static void allSay() {
+    Person currentPerson = lastPerson;
+    while(currentPerson != null) {
+      currentPerson.say("");
+      currentPerson = currentPerson.previousPerson;
+    }
   }
 }
