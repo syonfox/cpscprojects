@@ -1,3 +1,9 @@
+//import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
+//import java.util.Random;
+
 import java.io.RandomAccessFile;
 import java.io.File;
 import java.io.IOException;
@@ -10,10 +16,10 @@ public class PersonTester{
   //this method is modified form a stackoverflow post.
   //link to origanal post http://stackoverflow.com/a/19850005
   
-  //NOTE only 4080 names can be generated after that the name fred will be used
-  public static String getRandomName()
-  {
-    String name = "FRED";
+  //NOTE only 4080 names can be generated after that the 
+  //name fred will be used and filenotfound error wqill be printed
+  public static String getRandomName() {
+    String name = "Fred";
     try{
       RandomAccessFile f = new RandomAccessFile("namelist", "r");
       long randomLocation = (long) (Math.random() * f.length());
@@ -26,15 +32,19 @@ public class PersonTester{
     } catch(IOException e) {
       System.out.println("Error: IO Exeption");
     }
-    
+   
     return name;
+  }
+  public static String getFullName() {
+    return getRandomName()+" "+getRandomName();
   }
 
   public static void main(String[] args) {
     
-    for(int i=0;i<4080;i++) {
-      String name = getRandomName();
-      System.out.println(i+" - "+name);
-    }
+    ArrayList<Person> people = new ArrayList<Person>();
+    people.add(new Person(getFullName()));
+    people.get(0).say("");
+    System.out.print("In a small town");
+    
   }
 }
