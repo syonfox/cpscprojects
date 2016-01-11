@@ -77,7 +77,9 @@ private boolean isAlive;
   
   //causes a person to say hello,  dead persons canot say hello
   public void sayHello() {
-    System.out.print(name+":  Hello, I'm " + name +"?\n");
+    if(isAlive) {
+      System.out.print(name+":  Hello, I'm " + name +"?\n");
+    }
   }
   //causes a person to say somthing
   //hopefully you dont mind me adding this public method it just makes writing my store a lot easy
