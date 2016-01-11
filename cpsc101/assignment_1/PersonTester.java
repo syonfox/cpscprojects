@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
-//import java.util.Random;
+import java.util.Random;
 
 import java.io.RandomAccessFile;
 import java.io.File;
@@ -43,8 +43,16 @@ public class PersonTester{
     
     ArrayList<Person> people = new ArrayList<Person>();
     people.add(new Person(getFullName()));
-    people.get(0).say("");
-    System.out.print("In a small town");
+    //people.get(0).say("");
+    
+    Random rand = new Random();
+    int population = rand.nextInt(1500) + 501;
+    for(int i = 0; i < population; i++) {
+      people.add(new Person(getFullName()));
+      people.get(i).sayHello();
+    }
+    System.out.print("In  small town called Randville there are "+population+" people living their lives.\n");
+    System.out.print("");
     
   }
 }
