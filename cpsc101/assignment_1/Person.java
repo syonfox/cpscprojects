@@ -60,8 +60,10 @@ private boolean isAlive;
  
   //causes a person to die and changes the number of alive persons
   public void die() {
-    isAlive=false;
-    alive--;
+    if(isAlive) {
+      isAlive=false;
+      alive--;
+    }
  }
   
   //is uses to make a person murder another person,  makes the murderer of a person knowen to that person.
