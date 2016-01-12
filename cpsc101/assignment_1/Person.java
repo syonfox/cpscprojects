@@ -20,12 +20,12 @@ import java.io.FileNotFoundException;
 public class PersonTester{
 
 
-  //retuens a random line(name since there is a name on each line) form a file and retuensd it as a string
+  //Returns a random line(name since there is a name on each line) form a file and returns it as a string
   //this method is modified form a stackoverflow post.
-  //link to origanal post http://stackoverflow.com/a/19850005
+  //link to original post http://stackoverflow.com/a/19850005
   
   //NOTE only 4080 names can be generated after that the 
-  //name fred will be used and filenotfound error wqill be printed
+  //name fred will be used and filenotfound error will be printed
   public static String getRandomName() {
     String name = "Fred";
     try{
@@ -55,26 +55,26 @@ public class PersonTester{
   public static void main(String[] args) {
     
     
-    //makes a list for the people to be in 
+    //Makes a list for the people to be in 
     ArrayList<Person> people = new ArrayList<Person>();
       
-    //decuses the population of random vile  
+    //Decides the population of Random Ville  
     Random rand = new Random();
     int numberOfPeople = rand.nextInt(500) + 10;
     
-    //create person objects in the people array
+    //Create person objects in the people array
     for(int i = 0; i < numberOfPeople; i++) {
       people.add(new Person(getFullName()));
       //people.get(i).sayHello();
     }
     
-    //start of the store
+    //Start of the story
     System.out.print("In  small town called Random Ville there are "+Person.numberLiving()+" people living happy.\n");
     
     int murdererCount = rand.nextInt(10) + 1;
     System.out.print("Sadly this town has a few("+murdererCount+") murderers in it who plan to go on a rampage!");
     
-    //picks the murderers
+    //Picks the murderers
     ArrayList<Integer> murderers = new ArrayList<Integer>();
     for(int i = 0; i < murdererCount; i++) {
       int temp = 0;
@@ -121,7 +121,7 @@ public class PersonTester{
      
     }
     
-  //  for(int j = 0; j < murderers.size(); j++) {
+  //for(int j = 0; j < murderers.size(); j++) {
      // murderers.get(j).name();
     //}
     //Person.allSay("hi");
