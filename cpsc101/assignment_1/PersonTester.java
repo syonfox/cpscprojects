@@ -1,3 +1,11 @@
+/**
+* cpsc101 lab 1
+* date: January 2016
+* Made By:
+*  Kier Lindsay
+**/
+
+
 //import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,49 +43,52 @@ public class PersonTester{
    
     return name;
   }
+  
+  
   public static String getFullName() {
     return getRandomName()+" "+getRandomName();
   }
 
+
+
+
   public static void main(String[] args) {
     
-    ArrayList<Person> people = new ArrayList<Person>();
-    people.add(new Person(getFullName()));
-    //people.get(0).say("");
     
+    //makes a list for the people to be in 
+    ArrayList<Person> people = new ArrayList<Person>();
+      
+    //decuses the population of random vile  
     Random rand = new Random();
-    int numberOfPeople = rand.nextInt(15) + 5;
+    int numberOfPeople = rand.nextInt(500) + 10;
+    
+    //create person objects in the people array
     for(int i = 0; i < numberOfPeople; i++) {
       people.add(new Person(getFullName()));
-      //people.get(i).sayHello();
     }
-    System.out.print("In  small town called Random Ville there are "+numberOfPeople+" people living their lives.\n");
-    System.out.println( "alive:" + Person.numberLiving() + " , " + people.size() +" , "+numberOfPeople);
     
+    //start of the store
+    System.out.print("In  small town called Random Ville there are "+Person.numberLiving()+" people living happy.\n");
     
+    int murdererCount = rand.nextInt(10) + 1;
+    System.out.print("Sadly this town has a few("+murdererCount+") murderers in it who plan to go on a rampage!");
     
-    
-    
-    int murdererCount = rand.nextInt(5) + 1;
-    System.out.println(murdererCount);
+    //picks the murderers
     ArrayList<Integer> murderers = new ArrayList<Integer>();
     for(int i = 0; i < murdererCount; i++) {
       int temp = 0;
       boolean alreadyMurderer = true;
       while(alreadyMurderer) {
-	alreadyMurderer=false;
-	temp =rand.nextInt(numberOfPeople);
-	for(int j = 0; j < murderers.size(); j++) {
-	  if(temp == murderers.get(j)) {
-	    alreadyMurderer=true;
-	  }
-	}
+			alreadyMurderer=false;
+			temp =rand.nextInt(numberOfPeople);
+			for(int j = 0; j < murderers.size(); j++) {
+  				if(temp == murderers.get(j)) {
+    				alreadyMurderer=true;
+				}
+			}
       }
       murderers.add(temp);
-      
-      //people.get(temp).sayHello();
-      
-    }
+	}
     
     
     //System.out.println( Person.numberLiving() );
