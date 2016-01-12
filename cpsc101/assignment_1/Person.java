@@ -1,140 +1,132 @@
 /**
+* cpsc101 lab 1
+* date: January 2016
 * Made By:
 *  Kier Lindsay
-*  Raymond Strohschein
 **/
+
+
+//import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
+import java.util.Random;
 
-public class Person {
+import java.io.RandomAccessFile;
+import java.io.File;
+import java.io.IOException;
+import java.io.FileNotFoundException;
 
-/**Variables**/
-
-private static int population = 0;
-private static int alive = 0;
-private static Person lastPerson = null;
-
-private Person murderer;
-private Person previousPerson;
-private String name;
-private boolean isAlive;
+public class PersonTester{
 
 
-  /**Constructor**/
+  //retuens a random line(name since there is a name on each line) form a file and retuensd it as a string
+  //this method is modified form a stackoverflow post.
+  //link to origanal post http://stackoverflow.com/a/19850005
   
-  public Person(String n) {
-    name = n;
-    murderer = null;
-    isAlive = true;
-    population++;
-    alive++;
+  //NOTE only 4080 names can be generated after that the 
+  //name fred will be used and filenotfound error wqill be printed
+  public static String getRandomName() {
+    String name = "Fred";
+    try{
+      RandomAccessFile f = new RandomAccessFile("namelist", "r");
+      long randomLocation = (long) (Math.random() * f.length());
+      f.seek(randomLocation);
+      f.readLine();
+      name = f.readLine();
     
-    previousPerson = lastPerson;
-    lastPerson = this;    
-  }
- 
- 
- /**Attributes**/
- 
-  //returns this persons murderer, Murderer is set when somone is murdered( see the murder method ).
-  public Person murderer() {
-    return this.murderer;
-  }
-  
-  //return a persons name, if the person is dead it adds deceased after their name.
-  public String name() {
-    String returnString = name;
-    if(!isAlive) returnString += ", deceased" ;
-    return returnString;
-  }
-  
-  //boolean method to cheack wether a person is alive or not
-  public boolean isAlive() {
-    if(isAlive) {
-      return true;
-    } else {
-      return false;
+    } catch(FileNotFoundException e) {
+      System.out.println("Error: namelist File Not found");
+    } catch(IOException e) {
+      System.out.println("Error: IO Exeption");
     }
+   
+    return name;
   }
   
   
- /**Actions**/
- 
-  //causes a person to die and changes the number of alive persons
-  public void die() {
-    if(isAlive) {
-      isAlive=false;
-      alive--;
+  public static String getFullName() {
+    return getRandomName()+" "+getRandomName();
+  }
+
+
+
+
+  public static void main(String[] args) {
+    
+    
+    //makes a list for the people to be in 
+    ArrayList<Person> people = new ArrayList<Person>();
+      
+    //decuses the population of random vile  
+    Random rand = new Random();
+    int numberOfPeople = rand.nextInt(500) + 10;
+    
+    //create person objects in the people array
+    for(int i = 0; i < numberOfPeople; i++) {
+      people.add(new Person(getFullName()));
+      //people.get(i).sayHello();
     }
- }
-  
-  //is uses to make a person murder another person,  makes the murderer of a person knowen to that person.
-  public void murder(Person victim) {
-    victim.die();
-    victim.murderer = this;
-  }
-  
-  //causes a person to say hello,  dead persons canot say hello
-  public void sayHello() {
-    if(isAlive) {
-      System.out.print(name+":  Hello, I'm " + name +"?\n");
+    
+    //start of the store
+    System.out.print("In  small town called Random Ville there are "+Person.numberLiving()+" people living happy.\n");
+    
+    int murdererCount = rand.nextInt(10) + 1;
+    System.out.print("Sadly this town has a few("+murdererCount+") murderers in it who plan to go on a rampage!");
+    
+    //picks the murderers
+    ArrayList<Integer> murderers = new ArrayList<Integer>();
+    for(int i = 0; i < murdererCount; i++) {
+      int temp = 0;
+      boolean alreadyMurderer = true;
+      while(alreadyMurderer) {
+			alreadyMurderer=false;
+			temp =rand.nextInt(numberOfPeople);
+			for(int j = 0; j < murderers.size(); j++) {
+  				if(temp == murderers.get(j)) {
+    				alreadyMurderer=true;
+				}
+			}
+      }
+      murderers.add(temp);
+	}
+    
+    
+    //System.out.println( Person.numberLiving() );
+    
+    while(murderers.size()>0){
+      for(int i = 0; i < murderers.size(); i++) {
+	boolean noMurder = true;
+	int temp = 0;
+	while(noMurder) {
+	  temp = rand.nextInt( people.size() );
+	  if(people.get(temp).isAlive()) {
+	    
+	    System.out.print( people.get( murderers.get( i ) ).name() + " murdered " + people.get( temp ).name()+"!\n");
+	    people.get( murderers.get( i ) ).murder( people.get( temp ) );
+	    //System.out.println(people.get(temp).name() );
+	    noMurder = false;
+	    
+	    for(int j = 0; j < murderers.size(); j++) {
+	      if(temp == murderers.get(j)) {
+		murderers.remove(j);
+		break;
+	      }
+	    }
+	    
+	  }
+	}
+      }
+      
+     
     }
-  }
-  //causes a person to say somthing
-  //hopefully you dont mind me adding this public method it just makes writing my store a lot easy
-  public void say(String wordsToSay) {
-    if(isAlive) {
-      System.out.print(name+":  "+wordsToSay+"\n");
-    }
-  } 
-  //so it dosent break with no argument :)
-  public void say() {
-    if(isAlive) {
-      System.out.print(name+":  \n");
-    }
-  }
- 
- 
-  /**Class Attributes**/
-  
-  //returtns the number of living persons
-  public static int numberLiving() {
-    return alive;   
-  }
-  
-  //returns the number of dead persons
-  public static int numberDead() {
-    int dead = population - alive;
-    return dead;
-  }
-  
-  
-  /**Class Actions**/
-  //causes every living person to say hello
-  public static void allSayHello() {
-    Person currentPerson = lastPerson;
-    while(currentPerson != null) {
-      currentPerson.sayHello();
-      currentPerson = currentPerson.previousPerson;
-    }
-  }
-  
-  //causes every living person to say somthing
-  //hopefully you dont mind me adding this public method it just makes writing my store a lot easy
-  public static void allSay(String wordsToSay) {
-    Person currentPerson = lastPerson;
-    while(currentPerson != null) {
-      currentPerson.say(wordsToSay);
-      currentPerson = currentPerson.previousPerson;
-    }
-  }
-  //so it dosent break with no argumetns :)
-  public static void allSay() {
-    Person currentPerson = lastPerson;
-    while(currentPerson != null) {
-      currentPerson.say("");
-      currentPerson = currentPerson.previousPerson;
-    }
+    
+  //  for(int j = 0; j < murderers.size(); j++) {
+     // murderers.get(j).name();
+    //}
+    //Person.allSay("hi");
+   // while(population>1)
+    Person.allSayHello();
+    System.out.println( Person.numberLiving() );
   }
 }
