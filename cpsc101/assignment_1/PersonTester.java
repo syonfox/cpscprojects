@@ -60,18 +60,18 @@ public class PersonTester{
       
     //decuses the population of random vile  
     Random rand = new Random();
-    int numberOfPeople = rand.nextInt(500) + 10;
+    int numberOfPeople = rand.nextInt(200) + 10;
     
     //create person objects in the people array
     for(int i = 0; i < numberOfPeople; i++) {
       people.add(new Person(getFullName()));
     }
     
-    //start of the store
+    //start of the story
     System.out.print("In  small town called Random Ville there are "+Person.numberLiving()+" people living happy.\n");
     
     int murdererCount = rand.nextInt(10) + 1;
-    System.out.print("Sadly this town has a few("+murdererCount+") murderers in it who plan to go on a rampage!");
+    System.out.print("Sadly this town has a few("+murdererCount+") murderers in it who plan to go on a rampage!\n");
     
     //picks the murderers
     ArrayList<Integer> murderers = new ArrayList<Integer>();
@@ -88,12 +88,19 @@ public class PersonTester{
 			}
       }
       murderers.add(temp);
-	}
+      
+    } 
+    System.out.print("Let the murderers say Hello!\n");
     
-    
-    //System.out.println( Person.numberLiving() );
-    
+    for(int i = 0; i < murderers.size(); i++) {
+      people.get(murderers.get(i)).sayHello();
+    }
+    System.out.println();
+    System.out.print("Every night each murderer plans to kill one person.\n\n");
+    int day = 1;
     while(murderers.size()>0){
+      System.out.print("Day: "+ day + "\n");
+      
       for(int i = 0; i < murderers.size(); i++) {
 	boolean noMurder = true;
 	int temp = 0;
@@ -101,14 +108,30 @@ public class PersonTester{
 	  temp = rand.nextInt( people.size() );
 	  if(people.get(temp).isAlive()) {
 	    
-	    System.out.print( people.get( murderers.get( i ) ).name() + " murdered " + people.get( temp ).name()+"!\n");
+	    if(murderers.get( i ) == temp) {
+	      System.out.print( people.get( murderers.get( i ) ).name() + " committed seppuku!\n");
+	      
+	    }
+	    else System.out.print( people.get( murderers.get( i ) ).name() + " murdered " + people.get( temp ).name()+"!\n");
+	    
 	    people.get( murderers.get( i ) ).murder( people.get( temp ) );
 	    //System.out.println(people.get(temp).name() );
 	    noMurder = false;
 	    
+	    
 	    for(int j = 0; j < murderers.size(); j++) {
 	      if(temp == murderers.get(j)) {
-		murderers.remove(j);
+		
+		
+		//we need to decrement the for loop as the murderer array is one smaller now and all
+		//the fallowing murderers are shifted one spot down in the array
+		//we only need to do this if someone bofore or at our cutrrent position is killed.
+		if(murderers.get(j)<=i) {
+		  murderers.remove(j);
+		  i--;
+		}else {
+		  murderers.remove(j);
+		}
 		break;
 	      }
 	    }
@@ -116,16 +139,12 @@ public class PersonTester{
 	  }
 	}
       }
-      
-     
+    System.out.println();
+    day++;
     }
     
-  //  for(int j = 0; j < murderers.size(); j++) {
-     // murderers.get(j).name();
-    //}
-    //Person.allSay("hi");
-   // while(population>1)
+    System.out.println( Person.numberLiving() + " People survived the killing spree.  \nAs the survivors come out form hiding they all introduce themselves.\n" );
     Person.allSayHello();
-    System.out.println( Person.numberLiving() );
+    
   }
 }
