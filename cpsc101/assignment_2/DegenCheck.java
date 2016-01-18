@@ -1,8 +1,6 @@
-/**
-* cpsc101 lab 2
+/**This class cheacks if a word is a Degenerative word with more then 6 constanents and returns a boolian 
 * date: January 2016
-* Made By:
-*  Kier Lindsay
+* @author Kier Lindsay
 **/
 
 import java.text.Normalizer;
@@ -12,22 +10,23 @@ import java.text.Normalizer;
 class DegenCheck {
 
 
-//taken from http://stackoverflow.com/a/15190787
-//replaces acented characters suck as e hat with there non accented equivalent
-//
-public static String stripAccents(String s) {
+
+/** Replaces acented characters with their non-acented equvalents, Source: http://stackoverflow.com/a/15190787 **/
+  private static String stripAccents(String s) {
     s = Normalizer.normalize(s, Normalizer.Form.NFD);
     s = s.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
     return s;
-}
+  }
   //removes all non alphabetic caractes suck as ' or . from the word
+  /** Removes all non alpabetic characters, converts to lower case and strips accents. **/
   private static String strip(String word) {
     word = stripAccents(word);
     word = word.toLowerCase();
     word = word.replaceAll("[^a-z]", "");
     return word;
   }
-
+  
+  /** Retuens true if a word is a Degenerative word with more then 6 constanents **/
   public static boolean isDegen(String word) {
     //strips the word
     word = strip(word);

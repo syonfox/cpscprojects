@@ -1,8 +1,7 @@
-/**
-* cpsc101 lab 2
-* date: January 2016
-* Made By:
-*  Kier Lindsay
+/**Main class, uses FileManager and DegenCheck to take a filev of line seperated 
+words and print the Degenerative words with more then 6 constanents to both a 
+file and to System.out
+* @author Kier Lindsay
 **/
 
 
@@ -25,6 +24,7 @@ file into an Array  aray list?
     if less then 6 cars w/ no vawals deleate
     else if inorder dont deleate
 */
+/** Main takes no arguments but must have file names set inside of it **/
 public class Main {
   
   public static void main(String[] args) {
