@@ -1,4 +1,4 @@
-/**This class is Made to Manage Files, Once you make a filemanager you can easaly perfomr a variaty of operations on the file including reading and writing.
+/**This class is Made to Manage Files, Once you make a filemanager you can easily perfom a variaty of operations on the file including reading and writing.
 * date: January 2016
 * @author Kier Lindsay
 **/
@@ -19,9 +19,9 @@ import java.io.BufferedWriter;
 
 
 //  I know making this class is more work then I need to do but it will
-//  hopfully be able to be reuesd in the future :D
+//  hopefully be able to be reused in the future :D
 class FileManager {
-  /** file is a file obgect that links to the file's path **/
+  /** file is a file object that links to the file's path **/
   private File file;
   /** that ArrayList filelines is uses to store a file within the fileManager **/
   private ArrayList<String> fileLines;
@@ -66,7 +66,7 @@ class FileManager {
     }
   }
   
-  /** Retuens the file as an ArrayList **/
+  /** Returns the file as an ArrayList **/
   public ArrayList<String> getArrayList() {
     return fileLines;
   }
