@@ -1,4 +1,4 @@
-/**This class checks if a word is a Degenerative word with more then 6 consonents and returns a boolean 
+/**This class checks if a word is a Degenerative word with more then 6 consonants and returns a boolean 
 * date: January 2016
 * @author Kier Lindsay
 **/
@@ -16,7 +16,7 @@ class DegenCheck {
     s = s.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
     return s;
   }
-  //removes all non alphabetic caractes suck as ' or . from the word
+  //removes all non alphabetic characters such as ' or . from the word
   /** Removes all non alphabetic characters, converts to lower case and strips accents. **/
   private static String strip(String word) {
     word = stripAccents(word);
@@ -25,7 +25,7 @@ class DegenCheck {
     return word;
   }
   
-  /** Retuens true if a word is a Degenerative word with more then 6 constanents **/
+  /** Returns true if a word is a Degenerative word with more then 6 consonants **/
   public static boolean isDegen(String word) {
     //strips the word
     word = strip(word);
@@ -37,7 +37,7 @@ class DegenCheck {
       word = word.replaceAll("[aeiouy]", "");
       //if its smaller then 6 chars after removing vowels we still dont have to bother
       if(word.length()>5) {
-	//for each consonent in the word (skipping the first one so we can do (i-1) insted of (i+1))
+	//for each consonant in the word (skipping the first one so we can do (i-1) insted of (i+1))
 	//thus avoiding null pointer exceptions
 	for(int i = 1; i < word.length(); i++) {
 	  if(word.charAt(i) < word.charAt(i-1)) {
