@@ -1,0 +1,3 @@
+Employee  Employee  Hours/    Rate/   Commision   Other  Deductions  Take
+Class     Number    Week      Hour                                   Home
+----------------------------------------------------------------------------
