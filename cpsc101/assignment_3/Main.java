@@ -1,4 +1,4 @@
-/**Stuff
+/**This is the main class for the Employee report program.
 * @author Kier Lindsay
 **/
 
@@ -16,48 +16,56 @@ import java.util.regex.Pattern;
 
 public class Main {
 
-
+  
   public static void processReport( Reader in, Writer out ) throws IOException {
     Report report = new Report( out );
     report.writeHeader();
     
     Scanner sc = new Scanner( in );
     
-    Employee current;
+    Employee current = null;
     String eType;
     while( sc.hasNext() ) {
-      
+      //gets first paramiter in the file
       eType = sc.next();
-      System.out.println(eType);
+      //makes the corasponding Employee
       switch(eType) {
-	case "FT":  current = new FullTimeEmployee(); break; 
-	//case "PT":  current = new Parttime(); break;
-	//case "CO":  current = new Contract(); break;
-	default: System.out.println("Bad config"); current = new Employee(); System.exit(0);
+	      case "FT":  current = new FullTimeEmployee(); break; 
+	      case "PT":  current = new PartTimeEmployee(); break;
+	      case "CO":  current = new ContractEmployee(); break;
+	      default: System.out.println("Error: UnknowenEmployeeType - Cheack configuration file and format."); System.exit(0);
       }
+      //gives the rest of the line to the Employee
+      current.setDefaultData();
       current.readDetailsFrom(sc);
+      current.calculateNeededResults();
+      writes the Employee to the file
+      report.writeLine(current);
+      
     }
-    
+    //finishes the report
+    report.writeReportTotals();
     report.finish();
   }
 
 
   public static void main(String[] args) {
-  
+    
+    //makes sure one argument is given
     if( args.length == 0 ) {
       System.out.println( "Error: NoInputFile - Please give a input file as parameter one" );
       System.exit( 0 );
     } 
     
     File file = new File(args[0]);
-    
+    //makes it so that there shouldent be io exeptions 
     if( !file.exists() ) {
       System.out.println( "Error: FileNotFound - No file found at " 
-	  + file.getAbsolutePath() + " Could not be found");
+	                        + file.getAbsolutePath() + " Could not be found");
       System.exit(0);
     } else if( !file.canRead() ) {
       System.out.println( "Error: CannotReadFile - Program Unable to read file at " 
-	  + file.getAbsolutePath() + ", Cheack Permision");
+	                        + file.getAbsolutePath() + ", Cheack Permision");
       System.exit(0);
     }
     
@@ -72,7 +80,7 @@ public class Main {
     
     if(out.exists() && !out.canWrite() ) {
       System.out.println( "Error: CannotWriteToFile - Program Unable to write to file at " 
-	  + file.getAbsolutePath() + ", Cheack Permision");
+	                        + file.getAbsolutePath() + ", Cheack Permision");
     }
     
     

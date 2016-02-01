@@ -1,19 +1,12 @@
-
-
-
-
-
-
-
-
-
-
-
+/**The Employee class is a base class for multipul employclasses and is not verry usefull withough children.
+* @author Kier Lindsay
+**/
 import java.util.Scanner;
 
-
-class Employee {
-  
+//Employee is abstrace becuse Im not allowing unknowen Employee types. 
+//so in order to make an Employee you nees to have a subclass.
+abstract class Employee {
+  //the e in eClass, eNum, getEClass etc stands for employee
   private String eClass;
   private String eNum;
   private double hours;
@@ -23,6 +16,21 @@ class Employee {
   private double deductions;
   private double takeHome;
   
+  
+  public Employee() {
+    String eClass;
+    String eNum;
+    double hours;
+    double rate;
+    double commision;
+    double other;
+    double deductions;
+    double takeHome;
+    
+  }
+  
+  //lots of setters and getters for the children to use.
+  //the setters could and probubaly should be protected.
   public String getEClass() {
     return this.eClass;
   }
@@ -54,7 +62,7 @@ class Employee {
   public double getTakeHome() {
     return this.takeHome;
   }
-  
+ 
   public void setEClass( String s ) {
   eClass = s;
   }
@@ -87,77 +95,16 @@ class Employee {
     takeHome = d;
   }
   
+
+  public abstract void readDetailsFrom(Scanner in);
   
-  public Employee() {
-    String eClass;
-    String eNum;
-    double hours;
-    double rate;
-    double commision;
-    double other;
-    double deductions;
-    double takeHome;
-    
-  }
+  public abstract void calculateNeededResults();
   
-  public void readDetailsFrom(Scanner in) {
-    this.setEClass("EE");
-    this.setENum(in.next());
-    this.setRate(in.nextDouble());
-    /*hours = 40;
-    other = 0;
-    commision = 0;
-    deductions = 33.3;
-    takeHome = 9999.26;*/
-  }
+  public abstract void setDefaultData();
   
+  public void calculateTakeHome() {
+    double takeHome = (this.getRate() * this.getHours()) + this.getOther() 
+		      + this.getCommision() - this.getDeductions();
+    this.setTakeHome(takeHome );
+  }  
 }
-
-
-
-class FullTimeEmployee extends Employee {
-  
-  public FullTimeEmployee() {
-    String eClass;
-    String eNum;
-    double hours;
-    double rate;
-    double commision;
-    double other;
-    double deductions;
-    double takeHome;
-    
-  }	
-  
-  public void readDetailsFrom(Scanner in) {
-    
-    this.setEClass("FT");
-    this.setENum(in.next());
-    this.setRate(in.nextDouble());
-    System.out.println("good");
-    /*hours = 40;
-    other = 0;
-    commision = 0;
-    deductions = 33.3;
-    takeHome = 9999.26;*/
-  }
-}
-
-
-
-
-/*class PartTimeEmployee extends Employee {
-  
-  public void readDetailsFrom(Scanner in) {
-  
-  }
-}
-
-
-
-class ContractEmployee extends Employee {
-  
-  public void readDetailsFrom(Scanner in) {
-  
-  }
-}*/
