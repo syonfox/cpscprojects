@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 //Employee is abstrace becuse Im not allowing unknowen Employee types. 
 //so in order to make an Employee you nees to have a subclass.
-abstract class Employee {
+public abstract class Employee {
   //the e in eClass, eNum, getEClass etc stands for employee
   private String eClass;
   private String eNum;
