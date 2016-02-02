@@ -17,18 +17,6 @@ public abstract class Employee {
   private double takeHome;
   
   
-  public Employee() {
-    String eClass;
-    String eNum;
-    double hours;
-    double rate;
-    double commision;
-    double other;
-    double deductions;
-    double takeHome;
-    
-  }
-  
   //lots of setters and getters for the children to use.
   //the setters could and probubaly should be protected.
   public String getEClass() {
