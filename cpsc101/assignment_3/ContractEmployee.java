@@ -4,7 +4,7 @@
 
 import java.util.Scanner;
 
-class ContractEmployee extends Employee {
+public class ContractEmployee extends Employee {
   
    public void setDefaultData() {
     this.setEClass( "CO" );
