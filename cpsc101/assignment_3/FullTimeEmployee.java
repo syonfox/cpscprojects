@@ -4,7 +4,7 @@
 
 import java.util.Scanner;
 
-class FullTimeEmployee extends Employee {
+public class FullTimeEmployee extends Employee {
   
   //I know I dont need to add all of the "this.***" but I like knowing.
   //its not so importan for this project but for others I think it may be nice.

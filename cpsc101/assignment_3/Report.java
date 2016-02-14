@@ -10,7 +10,7 @@ import java.io.Writer;
 import java.io.IOException;
 import java.util.Formatter;
 
-class Report {
+public class Report {
 
   private Writer out;
   private int maxLines;

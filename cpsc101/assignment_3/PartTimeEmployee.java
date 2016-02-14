@@ -4,7 +4,7 @@
 
 import java.util.Scanner;
 
-class PartTimeEmployee extends Employee {
+public class PartTimeEmployee extends Employee {
   
   public void setDefaultData() {
     this.setEClass( "PT" );

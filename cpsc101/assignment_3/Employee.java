@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 //Employee is abstrace becuse Im not allowing unknowen Employee types. 
 //so in order to make an Employee you nees to have a subclass.
-abstract class Employee {
+public abstract class Employee {
   //the e in eClass, eNum, getEClass etc stands for employee
   private String eClass;
   private String eNum;
@@ -16,18 +16,6 @@ abstract class Employee {
   private double deductions;
   private double takeHome;
   
-  
-  public Employee() {
-    String eClass;
-    String eNum;
-    double hours;
-    double rate;
-    double commision;
-    double other;
-    double deductions;
-    double takeHome;
-    
-  }
   
   //lots of setters and getters for the children to use.
   //the setters could and probubaly should be protected.
