@@ -1,0 +1,10 @@
+
+Q: Why does "TimeInterface ti = new version1.Time(12,30,0);" 
+   not work unless Time implements TimeInterface
+   
+A: Because Java dosent know that Time can implement TimeInterface 
+   unitll we tell it.  As far as java is concened they re compleatly diffrent 
+   classes with nothing in comen untill we tell it.
+   
+   
+   

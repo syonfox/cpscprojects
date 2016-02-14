@@ -1,0 +1,14 @@
+
+Q: Why does adding "implements Comparable<Time>"
+   make Arrays.sort work?
+   
+A: Because Arrays.sort uses Comparable in order to sort the objects.
+   It does this by casting the object you wish to sort to a Comparable object.
+   with version1/2 this cannot happen because Java doesn't know that the compareTo 
+   method which our Time classes have is the same as the compareTo method promised 
+   by Comparable because of that it give us an error (ClassCastException).  When
+   we make our Time classes use the Comparable interface Java is then able to cast
+   our Time objects to Comparable ones. 
+
+   
+  
