@@ -1,4 +1,4 @@
-/**The FullTimeEmployee class is a child of Employee whitch can handle fulltime Employees
+ /**The FullTimeEmployee class is a child of Employee whitch can handle fulltime Employees
 * @author Kier Lindsay
 **/
 
