@@ -1,0 +1,261 @@
+Script started on Fri 19 Feb 2016 11:39:27 AM PST
+syonfox@rosebud:~/github/cpscprojects/cpsc101/assignment_4$ bash -v Test.sh
+#!/bin/bash
+
+
+javac version1/Time.java
+
+javac version2/Time.java
+
+
+javac Version1Test.java
+
+java Version1Test
+a: 10:10:10
+b: 0:0:0
+	set b to 5:55:3
+b: 5:55:3
+a.equals(b): false
+a.compareTo(b): 15307
+b.compareTo(a): -15307
+	c = new Time(b)
+	b.advanceBy(a.compareTo(b))
+b: 10:10:10
+a: 10:10:10
+a.equals(b): true
+c: 5:55:3
+b: 10:10:10
+	c.advanceBy(36260);
+c:15:59:23
+	c.advanceBy(-36260);
+c: 5:55:3
+	c.advanceBy(36300);
+c: 16:0:3
+c Hours: 16
+c Minutes: 0
+c seconds: 3
+
+javac Version2Test.java
+
+java Version2Test
+a: 10:10:10
+b: 0:0:0
+	set b to 5:55:3
+b: 5:58:0
+a.equals(b): false
+a.compareTo(b): 15130
+b.compareTo(a): -15130
+	c = new Time(b)
+	b.advanceBy(a.compareTo(b))
+b: 10:10:10
+a: 10:10:10
+a.equals(b): true
+c: 5:58:0
+b: 10:10:10
+	c.advanceBy(36260);
+c:16:2:20
+	c.advanceBy(-36260);
+c: 5:58:0
+	c.advanceBy(36300);
+c: 16:3:0
+c Hours: 16
+c Minutes: 3
+c seconds: 0
+
+
+javac Version1Sort.java
+
+java Version1Sort
+0: 2:2:2
+1: 1:2:3
+2: 20:19:18
+3: 0:50:42
+Exception in thread "main" java.lang.ClassCastException: version1.Time cannot be cast to java.lang.Comparable
+	at java.util.ComparableTimSort.countRunAndMakeAscending(ComparableTimSort.java:290)
+	at java.util.ComparableTimSort.sort(ComparableTimSort.java:157)
+	at java.util.ComparableTimSort.sort(ComparableTimSort.java:146)
+	at java.util.Arrays.sort(Arrays.java:472)
+	at Version1Sort.main(Version1Sort.java:22)
+
+javac Version2Sort.java
+
+java Version2Sort
+0: 2:2:2
+1: 1:2:3
+2: 20:19:18
+3: 0:50:42
+Exception in thread "main" java.lang.ClassCastException: version2.Time cannot be cast to java.lang.Comparable
+	at java.util.ComparableTimSort.countRunAndMakeAscending(ComparableTimSort.java:290)
+	at java.util.ComparableTimSort.sort(ComparableTimSort.java:157)
+	at java.util.ComparableTimSort.sort(ComparableTimSort.java:146)
+	at java.util.Arrays.sort(Arrays.java:472)
+	at Version2Sort.main(Version2Sort.java:22)
+
+
+javac version1b/Time.java
+
+javac version2b/Time.java
+
+
+javac Version1bSort.java
+
+java Version1bSort
+0: 2:2:2
+1: 1:2:3
+2: 20:19:18
+3: 0:50:42
+0: 0:50:42
+1: 1:2:3
+2: 2:2:2
+3: 20:19:18
+
+javac Version2bSort.java
+
+java Version2bSort
+0: 2:2:2
+1: 1:2:3
+2: 20:19:18
+3: 0:50:42
+0: 0:50:42
+1: 1:2:3
+2: 2:2:2
+3: 20:19:18
+
+
+cat sortAnsower.txt
+
+Q: Why does adding "implements Comparable<Time>"
+   make Arrays.sort work?
+   
+A: Because Arrays.sort uses Comparable in order to sort the objects.
+   It does this by casting the object you wish to sort to a Comparable object.
+   with version1/2 this cannot happen because Java doesn't know that the compareTo 
+   method which our Time classes have is the same as the compareTo method promised 
+   by Comparable because of that it give us an error (ClassCastException).  When
+   we make our Time classes use the Comparable interface Java is then able to cast
+   our Time objects to Comparable ones. 
+
+   
+  
+
+
+javac version1/Time.java version1/TimeInterface.java
+
+javac version2/Time.java version2/TimeInterface.java
+
+
+javac Version1Interface.java
+Version1Interface.java:10: error: incompatible types
+    TimeInterface ti = new Time(12,30,0);
+                       ^
+  required: TimeInterface
+  found:    Time
+1 error
+
+java Version1Interface
+Error: Could not find or load main class Version1Interface
+
+javac Version2Interface.java
+Version2Interface.java:10: error: incompatible types
+    TimeInterface ti = new Time(12,30,0);
+                       ^
+  required: TimeInterface
+  found:    Time
+1 error
+
+java Version2Interface
+Error: Could not find or load main class Version2Interface
+
+
+cat interfaceAnswer.txt
+
+Q: Why does "TimeInterface ti = new version1.Time(12,30,0);" 
+   not work unless Time implements TimeInterface
+   
+A: Because Java doesn't know that Time can implement TimeInterface 
+   until we tell it.  As far as Java is concerned they re completely different 
+   classes with nothing in common until we tell it.
+   
+   
+   
+
+
+javac version1c/Time.java version1c/TimeInterface.java
+
+javac version2c/Time.java version2c/TimeInterface.java
+
+
+javac Version1cInterface.java
+
+java Version1cInterface
+Hour:   12
+Minute: 30
+Second: 0
+
+javac Version2cInterface.java
+
+java Version2cIinterface
+Error: Could not find or load main class Version2cIinterface
+
+
+
+javac Version1c2cInterface.java
+Version1c2cInterface.java:11: error: incompatible types
+    ti[0] = new version1c.Time(12,30,0);
+            ^
+  required: TimeInterface
+  found:    Time
+1 error
+
+javac Version2cEndQ1.java
+
+java Version2cEndQ1
+0
+
+javac Version2cEndQ2.java
+Version2cEndQ2.java:9: error: cannot find symbol
+    ti.setSec(12) ;
+      ^
+  symbol:   method setSec(int)
+  location: variable ti of type TimeInterface
+1 error
+
+javac Version2cEndQ3.java
+
+java Version2cEndQ3
+12:30:0
+
+cat EndQuestions.txt
+
+Q: Can  you  create  a TimeInterface array  that  contains  a  mixture  
+   of version1c.Time and version2c.Time objects 
+
+A: Not the way i did it but I suspect that if I aranged my pakaged difrently Then I could 
+   do it if I had one TimeInterface that all of the versions used buy since I have a time 
+   interface foreac version it doesent work
+
+   
+Q: What happens with code like :
+    TimeInterface ti = new version2c.Time(12,30,0) ;
+    System.out.println(ti.getSec()) ;
+    
+A: The program will just print the seconds.
+
+
+Q: What happens with code like :
+    TimeInterface ti = new version2c.Time(12,30,0) ;
+    ti.setSec(12) ;
+    System.out.println(ti.getSec()) ;
+
+A: It doesn't compile because timeInterface doesn't have a setSec() method.
+
+
+Q: What happens with code like :
+    TimeInterface ti = new version2c.Time(12,30,0) ;
+    System.out.println(ti) ;
+    
+A: It prints out the output of the toString method in the time class,  Since it is a time object which has
+   a toString method it uses that to print instead of its hex address. This is because all objects extend Object
+   which has a toString method in it
+syonfox@rosebud:~/github/cpscprojects/cpsc101/assignment_4$ exit 
+Script done on Fri 19 Feb 2016 11:40:19 AM PST

@@ -36,7 +36,7 @@ public class Time implements TimeInterface {
   
   public Time( Time t ) {
   
-   // this dosent really need to be cheacked but It fixes at least one side effect :D.
+   // this dosent really need to be cheacked but It fixes at least one bug :D.
   if( t.getHour()<0 || t.getHour()>23 || t.getMin()<0 || t.getMin()>59 || t.getSec()<0 || t.getSec()>59 ){
   
       System.out.println( "Error: InvalidTime - The time " + t.getHour() + ":" + t.getMin() + ":" + t.getSec() + " is not a time on Earth." );

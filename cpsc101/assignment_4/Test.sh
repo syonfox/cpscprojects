@@ -37,4 +37,54 @@ javac Version2bSort.java
 
 java Version2bSort
 
+
 cat sortAnsower.txt
+
+
+
+javac version1/Time.java version1/TimeInterface.java
+
+javac version2/Time.java version2/TimeInterface.java
+
+
+javac Version1Interface.java
+
+java Version1Interface
+
+javac Version2Interface.java
+
+java Version2Interface
+
+
+cat interfaceAnswer.txt
+
+
+
+javac version1c/Time.java version1c/TimeInterface.java
+
+javac version2c/Time.java version2c/TimeInterface.java
+
+
+javac Version1cInterface.java
+
+java Version1cInterface
+
+javac Version2cInterface.java
+
+java Version2cIinterface
+
+
+
+javac Version1c2cInterface.java
+
+javac Version2cEndQ1.java
+
+java Version2cEndQ1
+
+javac Version2cEndQ2.java
+
+javac Version2cEndQ3.java
+
+java Version2cEndQ3
+
+cat EndQuestions.txt
