@@ -39,7 +39,7 @@ public class Main {
       current.setDefaultData();
       current.readDetailsFrom(sc);
       current.calculateNeededResults();
-      writes the Employee to the file
+      //writes the Employee to the file
       report.writeLine(current);
       
     }

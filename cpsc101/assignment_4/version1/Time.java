@@ -20,7 +20,7 @@ public class Time {
   public Time( int h, int m, int s ) {
   
     if( h<0 || h>23 || m<0 || m>59 || s<0 || s>59 ){
-    
+      //if time is not valad it prints an error and exits.
       System.out.println( "Error: InvalidTime - The time " + h + ":" + m + ":" + s + " is not a time on Earth." );
       System.exit( 0 );
       

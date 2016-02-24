@@ -1,0 +1,31 @@
+
+Q: Can  you  create  a TimeInterface array  that  contains  a  mixture  
+   of version1c.Time and version2c.Time objects 
+
+A: Not the way i did it but I suspect that if I aranged my pakaged difrently Then I could 
+   do it if I had one TimeInterface that all of the versions used buy since I have a time 
+   interface foreac version it doesent work
+
+   
+Q: What happens with code like :
+    TimeInterface ti = new version2c.Time(12,30,0) ;
+    System.out.println(ti.getSec()) ;
+    
+A: The program will just print the seconds.
+
+
+Q: What happens with code like :
+    TimeInterface ti = new version2c.Time(12,30,0) ;
+    ti.setSec(12) ;
+    System.out.println(ti.getSec()) ;
+
+A: It doesn't compile because timeInterface doesn't have a setSec() method.
+
+
+Q: What happens with code like :
+    TimeInterface ti = new version2c.Time(12,30,0) ;
+    System.out.println(ti) ;
+    
+A: It prints out the output of the toString method in the time class,  Since it is a time object which has
+   a toString method it uses that to print instead of its hex address. This is because all objects extend Object
+   which has a toString method in it.
