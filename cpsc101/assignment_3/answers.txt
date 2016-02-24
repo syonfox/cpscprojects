@@ -1,0 +1,17 @@
+1) This depends on your defanition of polymorpic but we decided that no they cannont.
+2) No signitures cant be difrent for overriding.
+3) Yes* in some cases you cannont. but in some cases you cannont
+
+Report ABC:
+  A:Writer
+    LinesPerPage
+    currentNumberOfLines
+    
+  B:setLinesPerPage(int)
+    print_banner
+    print(Employee)
+    finish()
+  
+  C:Writer(1:1)
+    Employee(1:*)
+    
