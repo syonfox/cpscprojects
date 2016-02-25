@@ -1,14 +1,11 @@
+package cpsc101.klindsay.lab5.colors;
 
+import javax.swing.JPanel;
+import java.awt.Color; 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-import java.awt.Color; 
-
-
-
-class Drawing extends JPanel {
+class StringDrawing extends JPanel {
   
   public void drawLines(Graphics g) {
     Graphics2D g2d = (Graphics2D) g;
@@ -26,10 +23,11 @@ class Drawing extends JPanel {
     color[10] = Color.RED;
     color[11] = Color.YELLOW;
 
-
-    for(int i = 10, j = 0; i < getSize().getHeight() - getSize().getHeight()%color.length; i += getSize().getHeight()/color.length, j++) {
+    int height = (int) getSize().getHeight();
+    for(int i = 10, j = 0; i < (height-10) - (height-10)%color.length;
+	i += ((height-10) - (height-10)%color.length)/color.length, j++) {
       g2d.setColor(color[j]);
-      g2d.drawString("<(^v^)>", (int) getSize().getWidth()/2 , i);
+      g2d.drawString("================    <(^v^)>    ================", (int) getSize().getWidth()/4 , i);
     }
     
     
@@ -39,30 +37,6 @@ class Drawing extends JPanel {
   public void paintComponent(Graphics g) {
         super.paintComponent(g);
         drawLines(g);
-  }
-
-}
-
-
-public class Lines extends JFrame {
-  
-  public Lines() {
-    setTitle("Lines");
-    setSize(600, 400);
-    setLocationRelativeTo(null);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    
-    add(new Drawing());
-    
-    setVisible(true);
-  }
-  
-
-
-  public static void main(String[] args) {
-  
-    Lines l = new Lines();
-  
   }
 
 }
