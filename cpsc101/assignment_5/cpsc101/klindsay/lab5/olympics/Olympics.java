@@ -22,13 +22,4 @@ public class Olympics extends JFrame {
 
     setVisible(true);
   }
-  
-
-
-  public static void main(String[] args) {
-  
-    Olympics o = new Olympics();
-  
-  }
-
 }

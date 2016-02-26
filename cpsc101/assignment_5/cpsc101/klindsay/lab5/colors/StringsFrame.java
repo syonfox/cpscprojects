@@ -20,11 +20,4 @@ public class StringsFrame extends JFrame {
   }
   
 
-
-  public static void main(String[] args) {
-  
-    StringsFrame s = new StringsFrame();
-  
-  }
-
 }

@@ -20,13 +20,5 @@ public class House extends JFrame {
     
     setVisible(true);
   }
-  
-
-
-  public static void main(String[] args) {
-  
-    House l = new House();
-  
-  }
 
 }
