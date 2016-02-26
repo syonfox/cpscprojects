@@ -1,5 +1,7 @@
-package cpsc101.klindsay.lab5.colors
-;
+/**
+*@author Kier Lindsay
+**/
+package cpsc101.klindsay.lab5.colors;
 
 import cpsc101.klindsay.lab5.colors.StringDrawing;
 import javax.swing.JFrame;

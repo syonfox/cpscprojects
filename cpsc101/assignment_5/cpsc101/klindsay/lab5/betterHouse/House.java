@@ -1,26 +1,27 @@
 /**
 *@author Kier Lindsay
 **/
-package cpsc101.klindsay.lab5.house;
-
+package cpsc101.klindsay.lab5.betterHouse;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 import java.awt.Color; 
 
+public class House {
 
-public class Drawing extends JPanel {
-
+  private int x,y,w,h;
   
-  public void draw(Graphics g) {
+  public House(int ix, int iy, int iw, int ih) {
+    x=ix;
+    y=iy;
+    w=iw;
+    h=ih;
+  }
+  
+
+  public void drawHouse(Graphics g) {
     Graphics2D g2d = (Graphics2D) g;
-    
-    int h = (int) getSize().getHeight();
-    int w = (int) getSize().getWidth();
-    
-    int x = 0;
-    int y = 0;
-    
+  
     g2d.setColor(Color.BLACK);
     g2d.fillRect(x, y, w,h);
     g2d.setColor(Color.YELLOW);
@@ -46,12 +47,6 @@ public class Drawing extends JPanel {
     int pw = w/8;
     g2d.fillRect(x+w/4, ry[0] , pw , ph );
     g2d.fillRect( x+(3*w/4)-pw , ry[2] , pw , ph );
-  }
-  
-  @Override
-  public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        draw(g);
   }
 
 }

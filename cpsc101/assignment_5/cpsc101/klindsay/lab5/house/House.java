@@ -1,3 +1,6 @@
+/**
+*@author Kier Lindsay
+**/
 package cpsc101.klindsay.lab5.house;
 
 import cpsc101.klindsay.lab5.house.Drawing;

@@ -1,3 +1,7 @@
+/**
+*@author Kier Lindsay
+**/
+
 package cpsc101.klindsay.lab5.colors;
 
 import javax.swing.JPanel;
@@ -39,4 +43,5 @@ class StringDrawing extends JPanel {
         drawLines(g);
   }
 
+  
 }
