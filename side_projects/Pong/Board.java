@@ -37,13 +37,13 @@ public class Board {
   
   g.setColor(Color.GRAY);
   g.fillRect( ((w/2)-5) ,0,10,h);
-  Font font = new Font("Impact", Font.BOLD,48);
+  Font font = new Font("Impact", Font.PLAIN,48);
                
                 //set font for JLabel
   g.setFont(font);
   g.setColor(Color.GREEN);
   String s  = String.format("%03d   %03d", left, right);
-  g.drawString(s, w/2 - 124, 48);
+  g.drawString(s, w/2 - 90, 48);
   //g.drawString( + "", w/2 + 10, 20);
   
     
