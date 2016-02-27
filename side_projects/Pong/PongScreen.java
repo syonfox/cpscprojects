@@ -14,7 +14,7 @@ public class PongScreen extends JPanel {
   private Paddle p1, p2;
   
   public PongScreen() {
-    ball = new Ball(8, 4);
+    ball = new Ball(6, 10);
     p1 = new Paddle(10, 160 ,10,80,15);
     p2 = new Paddle((int) getSize().getWidth()-30 , 160 ,10,80,15);
     ball.addPaddle();
