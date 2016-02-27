@@ -36,7 +36,7 @@ public class PongFrame extends JFrame {
     while(true) {
       ps.cheackSize();
       ps.updateScore();
-      for(int i = 0; i < 10; i++) {
+      //for(int i = 0; i < 10; i++) {
 	
 	
 	if(keyInput.isPressed("W") && !keyInput.isPressed("S")) ps.movePaddle(1, false);
@@ -45,12 +45,12 @@ public class PongFrame extends JFrame {
 	if(keyInput.isPressed("Up") && !keyInput.isPressed("Down")) ps.movePaddle(2, false);
 	else if(keyInput.isPressed("Down") && !keyInput.isPressed("Up")) ps.movePaddle(2, true);
 	ps.updatePaddles();
-	for(int j = 0; j < 4; j++) {
+	//for(int j = 0; j < 4; j++) {
 	ps.moveBall();
 	ps.repaint();
 	Thread.sleep(15);
-	}
-      }
+	//}
+      //}
     }
     
   }
