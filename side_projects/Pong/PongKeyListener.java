@@ -34,11 +34,11 @@ public class PongKeyListener implements KeyListener {
 
   @Override
   public void keyPressed(KeyEvent e) {
-    System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
+    //System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
     for(int i = 0; i < trackedKeys.size(); i++) {
       if( trackedKeys.get(i).equals( KeyEvent.getKeyText(e.getKeyCode()) ) ) {
 	keyState.set(i, true);
-	System.out.println("Somthing");
+	//System.out.println("Somthing");
 	break;
       }
     }
@@ -48,7 +48,7 @@ public class PongKeyListener implements KeyListener {
 
   @Override
   public void keyReleased(KeyEvent e) {
-    System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode()));
+    //System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode()));
     
     for(int i = 0; i < trackedKeys.size(); i++) {
       if( trackedKeys.get(i).equals( KeyEvent.getKeyText(e.getKeyCode()) ) ) {

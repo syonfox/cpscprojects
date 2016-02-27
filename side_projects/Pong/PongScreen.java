@@ -9,27 +9,40 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 public class PongScreen extends JPanel {
-  
+  private Board b;
   private Ball ball;
   private Paddle p1, p2;
+  
   public PongScreen() {
-    ball = new Ball(5, 10);
-    p1 = new Paddle(10,10,20,80,8);
-    p2 = new Paddle((int) getSize().getWidth()-30 ,10,20,80,8);
+    ball = new Ball(8, 4);
+    p1 = new Paddle(10, 160 ,10,80,15);
+    p2 = new Paddle((int) getSize().getWidth()-30 , 160 ,10,80,15);
     ball.addPaddle();
     ball.addPaddle();
+    
+    b = new Board();
+    
+    setBackground(Color.BLACK);
+    //setFont(new Font("Impact", 0,24));
+    
   }
   public void cheackSize() {
     ball.setRoom(getSize());
     p1.setRoom(getSize());
     p2.setRoom(getSize());
     p2.setX( (int) getSize().getWidth()-30 );
+    
+    b.setW( (int) getSize().getWidth() );
+    b.setH( (int) getSize().getHeight() );
   }
   public void moveBall(){
     //System.out.println("moveball");
     ball.step();
   }
-  
+  public void updateScore(){
+    b.setLeft(ball.getLeft());
+    b.setRight(ball.getRight());
+  }
   public void movePaddle(int paddle , boolean direction){
     if(paddle == 1) p1.step(direction);
     
@@ -44,9 +57,12 @@ public class PongScreen extends JPanel {
   @Override
   public void paint(Graphics g) {
     super.paint(g);
+    b.draw(g);
     ball.draw(g);
     p1.draw(g);
     p2.draw(g);
+    
+    //ball.draw(g);
   }
 
 

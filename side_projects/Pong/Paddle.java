@@ -33,7 +33,7 @@ public class Paddle {
   }
   
   public void draw(Graphics g) {
-    g.setColor(Color.BLACK);
+    g.setColor(Color.GREEN);
     g.fillRect(x,y,w,h);
   }
   
@@ -60,14 +60,14 @@ public class Paddle {
   }
   
   public void step(boolean direction) {
-    System.out.println("movepaddle"+ direction);
+    //System.out.println("movepaddle"+ direction);
     if(direction == true) {
       y += speed;
-      System.out.println("TRUI"+y);
+      //System.out.println("TRUI"+y);
     }
     else if(direction == false) {
       y -= speed;
-      System.out.println("False"+ y);
+      //System.out.println("False"+ y);
     }
     
     if( y < 0 ) y = 0;

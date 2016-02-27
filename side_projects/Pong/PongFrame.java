@@ -15,7 +15,7 @@ public class PongFrame extends JFrame {
     setLocationRelativeTo(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    setVisible(true);
+    
   }
   
   public void startGame() throws InterruptedException {
@@ -27,25 +27,30 @@ public class PongFrame extends JFrame {
     keyInput.addKey("Down");
     
     addKeyListener(keyInput);
+    
     PongScreen ps = new PongScreen();
     add(ps);
+    ps.cheackSize();
+    
+    setVisible(true);
     while(true) {
       ps.cheackSize();
-      ps.repaint();
-      
-      if(keyInput.isPressed("W") && !keyInput.isPressed("S")) ps.movePaddle(1, false);
-      else if(keyInput.isPressed("S") && !keyInput.isPressed("W")) ps.movePaddle(1, true);
-      
-      if(keyInput.isPressed("Up") && !keyInput.isPressed("Down")) ps.movePaddle(2, false);
-      else if(keyInput.isPressed("Down") && !keyInput.isPressed("Up")) ps.movePaddle(2, true);
-      ps.updatePaddles();
-      ps.moveBall();
-      
-      //System.out.println(keyInput.isPressed("W"));
-     // if(keyInput.isPressed("W") && !keyInput.isPressed("S")) ps.movePaddle(false);
-     // else if(keyInput.isPressed("S") && !keyInput.isPressed("W")) ps.movePaddle(true);
-      Thread.sleep(10);
-      
+      ps.updateScore();
+      for(int i = 0; i < 10; i++) {
+	
+	
+	if(keyInput.isPressed("W") && !keyInput.isPressed("S")) ps.movePaddle(1, false);
+	else if(keyInput.isPressed("S") && !keyInput.isPressed("W")) ps.movePaddle(1, true);
+	
+	if(keyInput.isPressed("Up") && !keyInput.isPressed("Down")) ps.movePaddle(2, false);
+	else if(keyInput.isPressed("Down") && !keyInput.isPressed("Up")) ps.movePaddle(2, true);
+	ps.updatePaddles();
+	for(int j = 0; j < 4; j++) {
+	ps.moveBall();
+	ps.repaint();
+	Thread.sleep(15);
+	}
+      }
     }
     
   }
