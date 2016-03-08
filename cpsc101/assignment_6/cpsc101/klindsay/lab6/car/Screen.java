@@ -14,7 +14,7 @@ public class Screen extends JPanel {
   public Screen() {
 
 
-    s = 10;
+    s = 20;
     s2 = 2*s;
     s4 = 4*s;
     s8 = 8*s;

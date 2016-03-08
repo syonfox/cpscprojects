@@ -16,10 +16,10 @@ public class FunCar  extends JFrame {
 
   public void start()throws InterruptedException {
     while(true) {
-      sc.moveCar(4);
+      sc.moveCar(1);
       sc.repaint();
       //System.out.println("Move");
-      Thread.sleep(15);
+      Thread.sleep(20);
     }
   }
 
