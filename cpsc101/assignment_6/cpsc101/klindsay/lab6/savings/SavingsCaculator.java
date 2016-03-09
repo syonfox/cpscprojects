@@ -28,7 +28,7 @@ public class SavingsCaculator extends JFrame {
 
   public SavingsCaculator() {
     setTitle("Am I Rich ... NO");
-    setSize(300, 600);
+    setSize(350, 600);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -52,12 +52,11 @@ public class SavingsCaculator extends JFrame {
 
     contentPane.add(calculateBT);
 
-    JTextArea resultsTA = new JTextArea("Results", 20, 20);
     resultsTA.setEditable(false);
 
     calculateBT.addActionListener( new ActionListener() {
       @Override
-      public static void actionPreformed(ActionEvent e) {
+      public void actionPerformed(ActionEvent e) {
         calculate();
       }
     });
@@ -80,17 +79,26 @@ public class SavingsCaculator extends JFrame {
 
     String balance = balanceTF.getText();
     String years = yearsTF.getText();
-    String intrest = years.getText();
+    String intrest = intrestTF.getText();
 
     try {
-      Double bal = Double.parseDouble(balance);
-      Double yea = Double.parseDouble(years);
-      Double inr = Double.parseDouble(intrest);
+      Double tempD;
+      tempD = Double.parseDouble(balance);
+      double bal = tempD.doubleValue();
+      tempD = Double.parseDouble(years);
+      double yea = tempD.doubleValue();
+      tempD = Double.parseDouble(intrest);
+      double inr = tempD.doubleValue();
 
+      int intYea = (int) yea;
       resultsTA.setText("");
-      for(int i = 0; i < (int) yea; i++){
-        resultsTA.append(String.format("Year %4.2f : %.2f", i, bal * (1 + i*(inr / 100)) ));
+      String tempString;
+      for(int i = 0; i <= intYea; i++){
+        tempString = String.format("Year %4d : %.2f \n", i, bal * (1 + i*(inr / 100)) );
+        resultsTA.append(tempString);
       }
+      tempString = String.format("\nFinal Year (%4.2f) : %.2f \n", yea, bal * (1 + yea*(inr / 100)) );
+      resultsTA.append(tempString);
 
     } catch (NumberFormatException e) {
       resultsTA.setText("You don ****** up dat input");
