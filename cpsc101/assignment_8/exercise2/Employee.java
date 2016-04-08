@@ -1,6 +1,7 @@
 /**The Employee class is a base class for multipul employclasses and is not verry usefull withough children.
 * @author Kier Lindsay
 **/
+package exercise2;
 import java.util.Scanner;
 
 //Employee is abstrace becuse Im not allowing unknowen Employee types.

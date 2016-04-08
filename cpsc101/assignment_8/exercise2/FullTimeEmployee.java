@@ -1,7 +1,7 @@
  /**The FullTimeEmployee class is a child of Employee whitch can handle fulltime Employees
 * @author Kier Lindsay
 **/
-
+package exercise2;
 import java.util.Scanner;
 
 public class FullTimeEmployee extends Employee {
@@ -16,7 +16,7 @@ public class FullTimeEmployee extends Employee {
     //do nothing
   }
   public FullTimeEmployee(FullTimeEmployee fte) {
-    super();
+    super(fte);
   }
   public FullTimeEmployee clone() {
     return new FullTimeEmployee(this);

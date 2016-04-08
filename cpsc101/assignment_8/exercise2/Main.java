@@ -1,7 +1,7 @@
 /**This is the main class for the Employee report program.
 * @author Kier Lindsay
 **/
-
+package exercise2;
 import java.io.File;
 import java.io.IOException;
 import java.io.FileNotFoundException;

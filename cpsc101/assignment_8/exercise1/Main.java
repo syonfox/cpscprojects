@@ -60,8 +60,13 @@ public class Main {
     ContractEmployee e2 = new ContractEmployee(e1);
     System.out.println("Making e3 with clone");
     ContractEmployee e3 = e1.clone();
-
-    System.out.println("e1.getEClass() == e3.getEClass:" + (e1.getEClass() == e3.getEClass()));	
+    System.out.println("  e1  ,  e2  ,  e3  ");
+    System.out.println(e1.getEClass()+ ","+e2.getEClass()+ ","+e3.getEClass());
+    System.out.println(e1.getHours()+ ","+e2.getHours()+ ","+e3.getHours());
+    System.out.println("Seting e2 hours to 20");
+    e2.setHours(20);
+    System.out.println(e1.getHours()+ ","+e2.getHours()+ ","+e3.getHours());
+    System.out.println("e1.getEClass() == e3.getEClass:" + (e1.getEClass() == e3.getEClass()));
   }
 
   public static void main(String[] args) {

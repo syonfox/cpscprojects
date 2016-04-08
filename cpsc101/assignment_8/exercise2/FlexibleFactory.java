@@ -1,3 +1,5 @@
+
+package exercise2;
 import java.io.File;
 
 public class FlexibleFactory implements EmployeeFactory {
@@ -6,8 +8,8 @@ public class FlexibleFactory implements EmployeeFactory {
   public FlexibleFactory()
   {
     empCodeLinks = new java.util.TreeMap<String, Employee> () ;
-    //setupFactory();
-    detectEmployees();
+    setupFactory();
+
   }
   public void addLink(String empCode, Employee empClass) {
     boolean linkNotAdded = (empCodeLinks.get(empCode) == null);
@@ -28,24 +30,4 @@ public class FlexibleFactory implements EmployeeFactory {
     addLink("PT", new PartTimeEmployee());
     addLink("CO", new ContractEmployee());
   }
-  private void detectEmployees() {
-    File dir = new File(".");
-    String[] files = dir.list();
-    Object o;
-    for(int i = 0; i < files.length; i++) {
-      if(files[i].endsWith(".class")) {
-        o = null;
-        try {
-          Class c = Class.forName(files[i].substring(0,files[i].length()-6));
-          o = c.getConstructor().newInstance();
-          if(o instanceof Employee) {
-            Employee e = (Employee) o;
-            addLink(e.getCode(), e);
-          }
-        } catch(Throwable x) {}
-
-      }
-    }
-  }
-
 }

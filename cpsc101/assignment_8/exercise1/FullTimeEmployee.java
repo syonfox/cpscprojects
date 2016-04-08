@@ -16,7 +16,7 @@ public class FullTimeEmployee extends Employee {
     //do nothing
   }
   public FullTimeEmployee(FullTimeEmployee fte) {
-    super();
+    super(fte);
   }
   public FullTimeEmployee clone() {
     return new FullTimeEmployee(this);

@@ -2,6 +2,8 @@
 * @author Kier Lindsay
 **/
 
+package exercise2;
+
 import java.util.Scanner;
 
 public class PartTimeEmployee extends Employee {
@@ -11,8 +13,8 @@ public class PartTimeEmployee extends Employee {
   public PartTimeEmployee() {
     //do nothing
   }
-  public PartTimeEmployee(PartTimeEmployee fte) {
-    super();
+  public PartTimeEmployee(PartTimeEmployee pte) {
+    super(pte);
   }
   public PartTimeEmployee clone() {
     return new PartTimeEmployee(this);

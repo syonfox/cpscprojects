@@ -7,7 +7,7 @@ public class ContractEmployee extends Employee {
     //do nothing
   }
   public ContractEmployee(ContractEmployee fte) {
-    super();
+    super(fte);
   }
   public ContractEmployee clone() {
     return new ContractEmployee(this);

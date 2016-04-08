@@ -18,8 +18,8 @@ public class FlexibleFactory implements EmployeeFactory {
   public Employee getFreshEmployee(String empCode) {
     Employee e = empCodeLinks.get(empCode);
 
-    if(e==null)  { //yes im making yopu know what type of rmployey your loading
-      System.out.println("Error: UnknowenEmployeeCode - Cheack configuration file and format.");
+    if(e==null)  { //yes im making you know what type of rmployey your loading
+      System.out.println("Error: UnknowenEmployeeCode - Cheack configuration file and format. ECode: "+empCode);
       System.exit(0);
     }
     return e.clone();
@@ -30,8 +30,9 @@ public class FlexibleFactory implements EmployeeFactory {
     addLink("PT", new PartTimeEmployee());
     addLink("CO", new ContractEmployee());
   }
+
   private void detectEmployees() {
-    File dir = new File(".");
+    File dir = new File("exercise4/");
     String[] files = dir.list();
     Object o;
     for(int i = 0; i < files.length; i++) {
@@ -44,7 +45,8 @@ public class FlexibleFactory implements EmployeeFactory {
             Employee e = (Employee) o;
             addLink(e.getCode(), e);
           }
-        } catch(Throwable x) {}
+        } catch(Throwable x) {
+        }
 
       }
     }

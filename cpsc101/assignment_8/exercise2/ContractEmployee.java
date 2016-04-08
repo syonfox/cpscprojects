@@ -1,3 +1,6 @@
+
+package exercise2;
+
 import java.util.Scanner;
 
 public class ContractEmployee extends Employee {
@@ -5,8 +8,8 @@ public class ContractEmployee extends Employee {
   public ContractEmployee() {
     //do nothing
   }
-  public ContractEmployee(ContractEmployee fte) {
-    super();
+  public ContractEmployee(ContractEmployee ce) {
+    super(ce);
   }
   public ContractEmployee clone() {
     return new ContractEmployee(this);

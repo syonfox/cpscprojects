@@ -12,7 +12,7 @@ public class CommissionEmployee extends Employee {
    //do nothing
  }
  public CommissionEmployee(CommissionEmployee cme) {
-   super();
+   super(cme);
  }
  public CommissionEmployee clone() {
    return new CommissionEmployee(this);

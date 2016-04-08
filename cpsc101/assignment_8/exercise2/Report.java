@@ -2,7 +2,7 @@
 * @author Kier Lindsay
 **/
 
-
+package exercise2;
 
 import java.io.File;
 import java.io.FileWriter;
