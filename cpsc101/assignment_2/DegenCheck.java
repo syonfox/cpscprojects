@@ -40,7 +40,7 @@ class DegenCheck {
 	//for each consonent in the word (skipping the first one so we can do (i-1) insted of (i+1))
 	//thus avoiding null pointer exceptions
 	for(int i = 1; i < word.length(); i++) {
-	  if(word.charAt(i) < word.charAt(i-1)) {
+	  if(word.charAt(i) <= word.charAt(i-1)) {
 	    isDegen = false;
 	    //once this is false once we dont have to check the rest.
 	    break;
